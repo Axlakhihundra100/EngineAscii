@@ -4,6 +4,3 @@ public class Character
 {
     
 }
-
-
-
