@@ -26,7 +26,7 @@ public class Player
         int safeTop = Math.Clamp((int)Position.Y, 0, Console.BufferHeight - 1);
         int safeWidth = Math.Clamp((int)Position.X, 0, Console.BufferWidth - 1);
         string left;
-        Console.WriteLine($"Cursor Position: left={safeWidth}, top={safeTop}, Max BufferHeight={Console.BufferHeight}");
+//        Console.WriteLine($"Cursor Position: left={safeWidth}, top={safeTop}, Max BufferHeight={Console.BufferHeight}");
         Console.SetCursorPosition(safeWidth, safeTop);
         Console.Write(Symbol);
     }
