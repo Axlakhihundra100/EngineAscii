@@ -6,29 +6,26 @@ using System;
 using System.Threading;
 using OpenTK.Windowing.Desktop;
 
-public class Game : GameWindow
+public class Game
 {
     private IScene currentScene;
-    public Game() : base(GameWindowSettings.Default, NativeWindowSettings.Default) {}
-
-    protected override void OnLoad()
+    public void run()
     {
-        base.OnLoad();
         Console.CursorVisible = false;
         SceneManager.LoadScene(new Scenes.GameScene());
-    }
+        var stopwatch = new System.Diagnostics.Stopwatch();
+        stopwatch.Start();
+        double previousTime = stopwatch.Elapsed.TotalSeconds;
 
-    protected override void OnUpdateFrame(FrameEventArgs args)
-    {
-        base.OnUpdateFrame(args);
-        SceneManager.Update(args.Time);
-    }
-
-    protected override void OnRenderFrame(FrameEventArgs args)
-    {
-        base.OnRenderFrame(args);
-        Console.Clear();
-        SceneManager.Render();
-        Thread.Sleep(50); 
+        while (true)
+        {
+            double currentTime = stopwatch.Elapsed.TotalSeconds;
+            double deltaTime = currentTime - previousTime;
+            previousTime = currentTime;
+            SceneManager.Update(deltaTime);
+            Console.Clear();
+            SceneManager.Render();
+            Thread.Sleep(50); 
+        }
     }
 }
