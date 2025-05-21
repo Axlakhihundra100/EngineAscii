@@ -13,20 +13,29 @@ public class Player
         Symbol = symbol;
     }
 
-    public void Update(float deltaTime, InputManager input)
+    public void Update(float deltaTime, InputManager input, List<Wall> walls)
     {
-        if (input.IsKeyDown(ConsoleKey.W)) Position.Y--;
-        if (input.IsKeyDown(ConsoleKey.S)) Position.Y++;
-        if (input.IsKeyDown(ConsoleKey.A)) Position.X--;
-        if (input.IsKeyDown(ConsoleKey.D)) Position.X++;
+        Vector2 newPosition = Position;
+
+        if (input.IsKeyDown(ConsoleKey.W)) newPosition.Y--;
+        if (input.IsKeyDown(ConsoleKey.S)) newPosition.Y++;
+        if (input.IsKeyDown(ConsoleKey.A)) newPosition.X--;
+        if (input.IsKeyDown(ConsoleKey.D)) newPosition.X++;
+
+        bool collides = walls.Any(wall => wall.Position == newPosition);
+        if (!collides)
+        {
+            Position = newPosition;
+        }
     }
+
 
     public void Draw()
     {
         int safeTop = Math.Clamp((int)Position.Y, 0, Console.BufferHeight - 1);
         int safeWidth = Math.Clamp((int)Position.X, 0, Console.BufferWidth - 1);
         string left;
-//        Console.WriteLine($"Cursor Position: left={safeWidth}, top={safeTop}, Max BufferHeight={Console.BufferHeight}");
+//        Console.WriteLine($"Cursor: left={safeWidth}, top={safeTop}, Max Height={Console.BufferHeight}");
         Console.SetCursorPosition(safeWidth, safeTop);
         Console.Write(Symbol);
     }
