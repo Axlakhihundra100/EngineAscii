@@ -44,7 +44,16 @@ public class GameScene : IScene // genomför alla scen grejir
     {
         input.Update();
         player.Update((float)deltaTime, input, walls);
-
+        // dev shortcut :0
+        if (input.IsKeyDown(ConsoleKey.N))
+        {
+            int nextLevel = levelNumber + 1;
+            string nextFile = $"C:\\Users\\AxelEngan\\RiderProjects\\EngineAscii\\EngineAscii\\Scenes/lvl{nextLevel}.txt";
+            if (File.Exists(nextFile))
+            {
+                SceneManager.LoadScene(new GameScene(nextFile, nextLevel));
+            }
+        }
         // checkar för död 
         if (deadlyWalls.Any(x => x.Position == player.Position))
         {
@@ -60,7 +69,7 @@ public class GameScene : IScene // genomför alla scen grejir
             Console.WriteLine("Level Complete");
             Thread.Sleep(1000);
             int nextLevel = levelNumber + 1;
-            string nextFile = $"C:\\Users\\AxelEngan\\RiderProjects\\EngineAscii\\EngineAscii\\Scenes/lvl{nextLevel}.txt"; // FUNKAR INTE 
+            string nextFile = $"C:\\Users\\AxelEngan\\RiderProjects\\EngineAscii\\EngineAscii\\Scenes/lvl{nextLevel}.txt"; // FUNKAR NU 
 
             if (File.Exists(nextFile))
             {
@@ -75,6 +84,7 @@ public class GameScene : IScene // genomför alla scen grejir
             }
             
         }
+        
     }
 
     public void Render()
