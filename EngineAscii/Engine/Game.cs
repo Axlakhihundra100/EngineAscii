@@ -28,6 +28,7 @@ public class Game // loop
             // updatar scene + render
             SceneManager.Update(deltaTime);
             Console.Clear();
+            //Console.SetCursorPosition(0, 0); - Fixar screen flickering MEN då måste jag fixa logik för att ta bort old player ;0 
             SceneManager.Render();
             Thread.Sleep(50); 
         }

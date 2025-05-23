@@ -15,3 +15,5 @@
 ##     ## ##     ## ##     ##      ##    ##  ##       ##          ##    ##       ##       
 ##     ##  #######  ##     ##       ######   ######## ########    ##    ######## ######## 
 @                                                                                         E
+
+(chat försökte skriva "Congratulations you completed the Game")
