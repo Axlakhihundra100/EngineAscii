@@ -1,14 +1,14 @@
 ﻿namespace Engine.Engine;
 
-public static class SceneManager
+public static class SceneManager // scene switch + scene "loop" 
 {
     private static IScene currentScene;
 
     public static void LoadScene(IScene newScene)
     {
-        currentScene?.Unload();
+        currentScene?.Unload(); // cleanup scen 
         currentScene = newScene;
-        currentScene.Load();
+        currentScene.Load(); // ny scene 
     }
 
     public static void Update(double deltaTime)

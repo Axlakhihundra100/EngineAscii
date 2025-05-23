@@ -1,7 +1,7 @@
 ﻿namespace EngineAscii.Engine;
 using OpenTK.Mathematics;
 using System;
-public class Wall
+public class Wall // vägg :)
 {
     public Vector2 Position;
     private char Symbol = '#';

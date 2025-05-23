@@ -5,7 +5,7 @@ using Engine.Engine;
 using OpenTK.Mathematics;
 namespace EngineAscii.Scenes;
 
-public class GameScene : IScene
+public class GameScene : IScene // genomför alla scen grejir 
 {
     private List<Wall> walls;
     private List<DeadlyWall> deadlyWalls;
@@ -23,7 +23,7 @@ public class GameScene : IScene
         this.levelNumber = levelNumber;
     }
 
-    public void Load()
+    public void Load() // laddar från lvl.txt
     {
         input = new InputManager();
         var (loadedWalls, loadedDeadlyWalls, playerStart, exitPos) = LevelLoader.LoadLevel(levelFile);
@@ -45,7 +45,7 @@ public class GameScene : IScene
         input.Update();
         player.Update((float)deltaTime, input, walls);
 
-
+        // checkar för död 
         if (deadlyWalls.Any(x => x.Position == player.Position))
         {
             Console.Clear();
@@ -53,13 +53,14 @@ public class GameScene : IScene
             Thread.Sleep(1000);
             SceneManager.LoadScene(new GameScene(levelFile, levelNumber));
         }
+        // checkar för klar lvl 
         if (exitPosition.HasValue && player.Position == exitPosition.Value)
         {
             Console.Clear();
             Console.WriteLine("Level Complete");
             Thread.Sleep(1000);
             int nextLevel = levelNumber + 1;
-            string nextFile = $"Levels/lvl{nextLevel}.txt";
+            string nextFile = $"Levels/lvl{nextLevel}.txt"; // FUNKAR INTE 
             if (File.Exists(nextFile))
                 SceneManager.LoadScene(new GameScene(nextFile, nextLevel));
             else 

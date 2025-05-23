@@ -15,13 +15,15 @@ public class Player
 
     public void Update(float deltaTime, InputManager input, List<Wall> walls)
     {
+        // uppdaterar position baserat på input
         Vector2 newPosition = Position;
 
-        if (input.IsKeyDown(ConsoleKey.W)) newPosition.Y--;
+        if (input.IsKeyDown(ConsoleKey.W)) newPosition.Y--; 
         if (input.IsKeyDown(ConsoleKey.S)) newPosition.Y++;
         if (input.IsKeyDown(ConsoleKey.A)) newPosition.X--;
         if (input.IsKeyDown(ConsoleKey.D)) newPosition.X++;
 
+        // löser vägg problemen :0 (halvt) :X
         bool collides = walls.Any(wall => wall.Position == newPosition);
         if (!collides)
         {
@@ -32,6 +34,7 @@ public class Player
 
     public void Draw()
     {
+        // ritar spelaren på rätt plats 
         int safeTop = Math.Clamp((int)Position.Y, 0, Console.BufferHeight - 1);
         int safeWidth = Math.Clamp((int)Position.X, 0, Console.BufferWidth - 1);
         string left;

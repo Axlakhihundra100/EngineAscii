@@ -1,9 +1,9 @@
 ﻿namespace Engine.Engine;
 
-public interface IScene
+public interface IScene // interface för scener
 {
-    void Load();
-    void Unload();
-    void Update(double deltaTime);
-    void Render();
+    void Load(); //laddar scen
+    void Unload(); //laddar av scen
+    void Update(double deltaTime); // spel logiken 
+    void Render(); // drawing, ritar i consolen
 }

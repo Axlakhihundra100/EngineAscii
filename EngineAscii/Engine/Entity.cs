@@ -1,5 +1,6 @@
 ﻿namespace EngineAscii.Engine;
 using OpenTK.Mathematics;
+// 2 do 
 public class Entity
 {
     public Vector2 Position;
