@@ -60,13 +60,20 @@ public class GameScene : IScene // genomför alla scen grejir
             Console.WriteLine("Level Complete");
             Thread.Sleep(1000);
             int nextLevel = levelNumber + 1;
-            string nextFile = $"Levels/lvl{nextLevel}.txt"; // FUNKAR INTE 
+            string nextFile = $"C:\\Users\\AxelEngan\\RiderProjects\\EngineAscii\\EngineAscii\\Scenes/lvl{nextLevel}.txt"; // FUNKAR INTE 
+
             if (File.Exists(nextFile))
+            {
                 SceneManager.LoadScene(new GameScene(nextFile, nextLevel));
-            else 
+
+            }
+            else
+            {
                 Console.WriteLine("Game Complete");
+                Thread.Sleep(3000);
+                Environment.Exit(0);
+            }
             
-            SceneManager.LoadScene(new GameScene("C:\\Users\\AxelEngan\\RiderProjects\\EngineAscii\\EngineAscii\\Scenes\\lvl2.txt"));
         }
     }
 
