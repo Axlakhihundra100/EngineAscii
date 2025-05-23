@@ -1,6 +1,6 @@
 Usage: 
 Install any IDE (c#) Preferably JetBrainsRider v(2024.1.1)
-Clone project. (Latest Major .NET) 
+Clone project. (.NET 8.0) 
 Terminal:
   cd EngineAscii
   dotnet build
